@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <form [formGroup]="filterForm">
+    <mat-form-field color="secondary" appearance="outline">
+      <mat-label>Student</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option *ngFor="let user of users" [value]="user">{{
+          user
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="controls.userId.errors?.required"
+        >Student is required!</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Subject</mat-label>
+      <mat-select formControlName="subject">
+        <mat-option *ngFor="let subject of subjects" [value]="subject">{{
+          subject
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="controls.subject.errors?.required"
+        >Subject is required!</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Learning Objective</mat-label>
+      <mat-select formControlName="learningObjective">
+        <mat-option
+          *ngFor="let learningObjective of learningObjectives"
+          [value]="learningObjective"
+          >{{ learningObjective }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="controls.learningObjective.errors?.required"
+        >Learning obective is required!</mat-error
+      >
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button (click)="getProgress()" color="primary" class="btn">
+    <mat-icon>search</mat-icon>
+    Get progress
+  </button>
+
+  <app-progress-chart
+    *ngIf="data && !isLoadingData"
+    [data]="data"
+  ></app-progress-chart>
+</div>

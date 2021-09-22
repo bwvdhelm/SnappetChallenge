@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: var(--max-width);
+  display: flex;
+  justify-content: center;
+
+  mat-form-field {
+    margin: 0 0.5rem;
+  }
+}
+
+.btn {
+  margin-bottom: 2rem;
+}

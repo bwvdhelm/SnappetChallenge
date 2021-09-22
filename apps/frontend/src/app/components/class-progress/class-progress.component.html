@@ -1,0 +1,72 @@
+<table *ngIf="progressToday && progressLastWeek; else spinner">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Today</th>
+      <th>Last week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th># Exercises</th>
+      <td>{{ progressToday.exercisesCount }}</td>
+      <td>{{ progressLastWeek.exercisesCount }}</td>
+    </tr>
+    <tr>
+      <th>Subjects</th>
+      <td>
+        <ol>
+          <li *ngFor="let subject of progressToday.subjects">
+            {{ subject }}
+          </li>
+        </ol>
+      </td>
+      <td>
+        <ol>
+          <li *ngFor="let subject of progressLastWeek.subjects">
+            {{ subject }}
+          </li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <th>Average progress</th>
+      <td>
+        {{ progressToday.averageProgress / progressToday.exercisesCount }}
+      </td>
+      <td>
+        {{ progressLastWeek.averageProgress / progressLastWeek.exercisesCount }}
+      </td>
+    </tr>
+    <tr>
+      <th>Average difficulty</th>
+      <td>
+        {{ progressToday.averageDifficulty / progressToday.exercisesCount }}
+      </td>
+      <td>
+        {{
+          progressLastWeek.averageDifficulty / progressLastWeek.exercisesCount
+        }}
+      </td>
+    </tr>
+    <tr>
+      <th>Learning objectives</th>
+      <td>
+        <ol>
+          <li *ngFor="let objective of progressToday.learningObjectives">
+            {{ objective }}
+          </li>
+        </ol>
+      </td>
+      <td>
+        <ol>
+          <li *ngFor="let objective of progressLastWeek.learningObjectives">
+            {{ objective }}
+          </li>
+        </ol>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #spinner> Loading... </ng-template>

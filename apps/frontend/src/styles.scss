@@ -1,0 +1,66 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+// Color styling
+$light-primary: mat-palette($mat-yellow, 700);
+$light-accent: mat-palette($mat-green, 600);
+$light-warn: mat-palette($mat-red, 900);
+$background-color: white;
+
+$light-theme: mat-dark-theme($light-primary, $light-accent, $light-warn);
+
+$background: map-get($light-theme, background);
+$background: map_merge(
+  $background,
+  (
+    background: $background-color,
+  )
+);
+$light-theme: map_merge(
+  $light-theme,
+  (
+    background: $background,
+  )
+);
+
+// Font styling
+$light-typography: mat-typography-config(
+  $font-family: (
+    "Roboto",
+  ),
+  $headline: mat-typography-level(1.5rem, 2.5rem, bold),
+  $title: mat-typography-level(1.25rem, 27px, bold),
+  $subheading-2: mat-typography-level(1.25rem, 2rem, 300),
+  $body-1: mat-typography-level(1rem, 21px, 300),
+);
+
+@include angular-material-theme($light-theme);
+@include angular-material-typography($light-typography);
+
+:root {
+  --max-width: 1000px;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto";
+  color: white;
+  background: #404344;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
